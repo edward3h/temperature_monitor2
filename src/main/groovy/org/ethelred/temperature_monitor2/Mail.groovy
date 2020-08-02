@@ -28,7 +28,7 @@ class Mail {
         message.setText(body)
 
         Transport transport = session.getTransport("smtp")
-        transport.connect(env.MAIL_HOST, env.MAIL_PORT, env.MAIL_USER, env.MAIL_PASS)
+        transport.connect(env.MAIL_HOST, env.MAIL_PORT as Integer, env.MAIL_USER, env.MAIL_PASS)
         transport.sendMessage(message, message.getAllRecipients())
         transport.close()
     }

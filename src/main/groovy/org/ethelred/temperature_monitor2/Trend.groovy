@@ -14,11 +14,11 @@ class Trend {
         end = l.last()
     }
 
-    def isRising() {
+    def getRising() {
         end > start
     }
 
-    def isFalling() {
+    def getFalling() {
         start > end
     }
 
