@@ -9,9 +9,8 @@ import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
 /**
- * TODO
- *
- * @author eharman* @since 2020-08-01
+ * borrowed from https://gist.github.com/quchie/3e02c5d5df8de804e8e0#gistcomment-2286689
+ * with a few edits
  */
 class Mail {
     def env = Dotenv.load()
