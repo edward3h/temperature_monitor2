@@ -61,3 +61,11 @@ spotless {
 		greclipse()
 	}
 }
+
+distributions {
+	main {
+		contents {
+			from file(".env")
+		}
+	}
+}
