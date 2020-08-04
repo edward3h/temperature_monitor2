@@ -1,3 +1,4 @@
+/* (C) 2020 Edward Harman */
 package org.ethelred.temperature_monitor2
 
 import io.github.cdimascio.dotenv.Dotenv

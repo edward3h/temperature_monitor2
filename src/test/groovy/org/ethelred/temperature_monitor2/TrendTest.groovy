@@ -1,3 +1,4 @@
+/* (C) 2020 Edward Harman */
 package org.ethelred.temperature_monitor2
 
 import spock.lang.Specification
@@ -17,10 +18,10 @@ class TrendTest extends Specification {
 
         where:
         input | c | expectRising | expectFalling | expectCross
-        [0.0] | 0 | false | false | false
-        [1.0, 2.0, 3.0] | 2 | true | false | true
-        [1.9, 2.0, 2.1] | 2 | true | false | true
-        [1.9, 2.0, 2.1] | 3 | true | false | false
-        [2.1, 2.0, 1.9] | 2 | false | true | true
+        [0.0]| 0 | false | false | false
+        [1.0, 2.0, 3.0]| 2 | true | false | true
+        [1.9, 2.0, 2.1]| 2 | true | false | true
+        [1.9, 2.0, 2.1]| 3 | true | false | false
+        [2.1, 2.0, 1.9]| 2 | false | true | true
     }
 }

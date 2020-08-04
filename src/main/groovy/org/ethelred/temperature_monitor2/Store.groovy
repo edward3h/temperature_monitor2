@@ -1,3 +1,4 @@
+/* (C) 2020 Edward Harman */
 package org.ethelred.temperature_monitor2
 
 import groovy.sql.Sql
@@ -57,8 +58,7 @@ create table if not exists alert (
         if (row) {
             new Alert(row)
         }
-        else
-        {
+        else {
             null
         }
     }
