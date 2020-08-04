@@ -64,7 +64,7 @@ create table if not exists alert (
     }
 
     List<Temperature> getRecentOutsideTemps() {
-        def rows = db.rows("select * from temperature where created_at > datetime('now', '-1 hour') order by created_at desc")
+        def rows = db.rows("select * from temperature where created_at > datetime('now', '-1 hour') order by created_at asc")
         rows.collect{row -> new Temperature(row)}
     }
 }
