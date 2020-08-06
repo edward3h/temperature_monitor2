@@ -62,10 +62,22 @@ spotless {
 	}
 }
 
+// backup .env and db before install overwrites them
+task backupLocal(type: Copy) {
+	into projectDir
+	from("${buildDir}/install/${project.name}") {
+		include ".env", "*.db"
+	}
+}
+
+installDist.dependsOn backupLocal
+
 distributions {
 	main {
 		contents {
-			from file(".env")
+			from(projectDir) {
+				include ".env", "*.db"
+			}
 		}
 	}
 }
