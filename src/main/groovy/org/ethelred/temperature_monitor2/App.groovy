@@ -2,16 +2,24 @@
 package org.ethelred.temperature_monitor2
 
 import groovy.time.TimeCategory
+import io.github.cdimascio.dotenv.Dotenv
 
 class App {
     static void main(String[] args) {
         new App().run()
     }
 
+    def env = Dotenv.load()
+
     def threshold = 50..75
 
     def tempSources = [
         new OpenWeatherSource()
+    ]
+
+    def senders = [
+        new Mail(),
+        new Webhook(url: env.WEBHOOK_URL)
     ]
 
     void run() {
@@ -26,7 +34,7 @@ class App {
                 def alert = AlertType.evaluate(threshold, trend)
                 if (alert && alert.type != lastAlert?.type) {
                     store << alert
-                    alert.send()
+                    alert.send(senders)
                 }
                 null
             }

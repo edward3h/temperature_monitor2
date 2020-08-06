@@ -13,8 +13,8 @@ class Alert extends Model {
     AlertType type
     String message
 
-    void send() {
+    void send(senders) {
         log.info("Sending alert ${message}")
-        new Mail(subject: "[temperature bot] ${message}", body: message).send()
+        senders.each { it.send(subject: "[temperature bot] ${message}", body: message) }
     }
 }

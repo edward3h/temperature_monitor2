@@ -15,17 +15,15 @@ import javax.mail.internet.MimeMessage
  */
 class Mail {
     def env = Dotenv.load()
-    String subject
-    String body
 
-    def send() {
+    def send(params) {
         Session session = Session.getDefaultInstance(new Properties())
 
         MimeMessage message = new MimeMessage(session)
         message.setFrom(env.MAIL_FROM)
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(env.MAIL_TO))
-        message.setSubject(subject)
-        message.setText(body)
+        message.setSubject(params.subject)
+        message.setText(params.body)
 
         Transport transport = session.getTransport("smtp")
         transport.connect(env.MAIL_HOST, env.MAIL_PORT as Integer, env.MAIL_USER, env.MAIL_PASS)
